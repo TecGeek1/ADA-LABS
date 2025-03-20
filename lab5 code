@@ -1,1 +1,46 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Stack:
+    def __init__(self):
+        self.top = None
+
+    def push(self, data):
+        new_node = Node(data)
+        new_node.next = self.top
+        self.top = new_node
+        print(f"Pushed {data} onto stack")
+
+    def pop(self):
+        if self.top is None:
+            print("Stack Underflow! Cannot pop from empty stack.")
+            return None
+        popped_data = self.top.data
+        self.top = self.top.next
+        print(f"Popped {popped_data} from stack")
+        return popped_data
+
+    def display(self):
+        if self.top is None:
+            print("Stack is empty")
+            return
+        temp = self.top
+        print("Stack elements:")
+        while temp:
+            print(temp.data, end=" -> ")
+            temp = temp.next
+        print("None")
+
+stack = Stack()
+stack.push(10)
+stack.push(20)
+stack.push(30)
+stack.display()
+stack.pop()
+stack.display()
+
+
+
 
